@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Outer Space</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+    <header></header>
+
+    <main>
+
+        <!--This Section is for the NASA Image of the Day-->
+        <div class="container mb-5">
+            <div class="row mb-4">
+                <div class="col" id="nasa_img">
+                    
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col">
+                    <h1>Image Name</h1>
+                </div>
+                <div class="col" id="nasa_img_description">
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <!--This section is for the near earth object tracker-->
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col">
+                    <h1>Near Earth Object Tracker</h1>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <p>
+                        Please enter a date to view all the near earth Asteroids
+                        NASA tracked on that day.<br/>
+                        Data includes size, speed, proximity, and more.
+                    </p>
+                </div>
+            </div>
+
+            <form id="searchForm" class="form">
+                <div class="row g-3">
+                    <div class="col-auto">
+                        <label for="searchDate" class="">Search Date</label>
+                        <input type="date" min="1900-01-01" max=""  class="form-control" id="searchDate" required>
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-2">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3" id="searchBtn" >Search the Cosmos</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Approach Date</th>
+                            <th scope="col">Estimated Diameter</th>
+                            <th scope="col">Miss Distance</th>
+                            <th scope="col">Relative Velocity</th>
+                            <th scope="col">Potentially Hazardous</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer></footer>
+
+
+
+    <script src="./scripts/scripts.js"></script>
+</body>
+</html>
