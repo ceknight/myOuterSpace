@@ -72,9 +72,10 @@ searchForm.addEventListener("submit", (e) => {
             const rowElement = document.createElement("tr");
             
             for (let k = 0; k < 5; k++)
-
-
-
+            let approachDate = neoArray[i].close_approach_data[0].close_approach_date_full;
+            let missDistance = neoArray[i].close_approach_data[0].miss_distance.miles;
+            let relVelocity = neoArray[i].close_approach_data[0].relative_velocity.miles_per_hour;
+            let diameterMin = neoArray[i].estimated_diameter.feet.estimated_diameter_min;
 
         }*/
 
