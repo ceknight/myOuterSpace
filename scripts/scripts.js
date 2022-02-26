@@ -1,6 +1,11 @@
 //api key
 const myNasa = '4x6hmYdQ0FD2bntNfgOclrkdWcLguZFjdXdq0T7m';
 
+//function to round data decimals
+const round = (value, decimals) => {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
 //image of day variables
 let nasa_img = document.getElementById('nasa_img');
 let img_description = document.getElementById('nasa_img_description');
@@ -20,7 +25,7 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=' + myNasa)
 let today = new Date();
     let dd = today.getDate();
     let mm = today.getMonth();
-    let yyyy = today.getFullYear();
+    const yyyy = today.getFullYear();
 
     if (dd < 10) {
         dd = '0' + dd;
@@ -35,17 +40,16 @@ let today = new Date();
 
 
 //near earth object data request
-
-let searchForm = document.getElementById("searchForm");
+const searchForm = document.getElementById("searchForm");
 
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log("Form has been submitted");
 
     //configure fetch url
-    let formRequest = document.getElementById("searchDate");
-    let dateChosen = formRequest.value;
-    let neoSearchUrl = 'https://api.nasa.gov/neo/rest/v1/feed?start_date=' + dateChosen + '&end_date=' + dateChosen + '&api_key=' + myNasa;
+    const formRequest = document.getElementById("searchDate");
+    const dateChosen = formRequest.value;
+    const neoSearchUrl = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${dateChosen}&end_date=${dateChosen}&api_key=${myNasa}`;
 
 
     //clear table body
@@ -62,22 +66,58 @@ searchForm.addEventListener("submit", (e) => {
     })
     .then(data => {
         console.log(data);
+
         //variables for table population
         const neoArray = data.near_earth_objects[dateChosen];
         console.log(neoArray.length);
 
         //populate table body
 
-        /*for (let i = 0; i < neoArray.length; i++) {
+        for (let i = 0; i < neoArray.length; i++) {
+
+            //create a table row for each object found in the array
             const rowElement = document.createElement("tr");
             
-            for (let k = 0; k < 5; k++)
-            let approachDate = neoArray[i].close_approach_data[0].close_approach_date_full;
-            let missDistance = neoArray[i].close_approach_data[0].miss_distance.miles;
-            let relVelocity = neoArray[i].close_approach_data[0].relative_velocity.miles_per_hour;
-            let diameterMin = neoArray[i].estimated_diameter.feet.estimated_diameter_min;
+            //get the data i want from the neoArray Object
+            const approachDate = neoArray[i].close_approach_data[0].close_approach_date_full;
+            const missDistance = neoArray[i].close_approach_data[0].miss_distance.miles;
+            const relVelocity = neoArray[i].close_approach_data[0].relative_velocity.miles_per_hour;
+            const diameterMin = neoArray[i].estimated_diameter.feet.estimated_diameter_min;
+            const diameterMax = neoArray[i].estimated_diameter.feet.estimated_diameter_max;
+            const isHazard = neoArray[i].is_potentially_hazardous_asteroid;
 
-        }*/
+            //round all the insane numbers to two decimal places
+            const missDist = round(missDistance, 2);
+            const relVel = round(relVelocity, 2);
+            const dMin = round(diameterMin, 2);
+            const dMax = round(diameterMax, 2);
+            const diameterEst = `${dMin} - ${dMax}`;
+
+            //layout the five table data pieces for our row
+            const cellElement1 = document.createElement("td"); //1 of 5
+            cellElement1.textContent = approachDate;
+            rowElement.appendChild(cellElement1);
+
+            const cellElement2 = document.createElement("td"); //2 of 5
+            cellElement2.textContent = diameterEst;
+            rowElement.appendChild(cellElement2);
+
+            const cellElement3 = document.createElement("td"); //3 of 5
+            cellElement3.textContent = missDist;
+            rowElement.appendChild(cellElement3);
+
+            const cellElement4 = document.createElement("td"); //4 of 5
+            cellElement4.textContent = relVel;
+            rowElement.appendChild(cellElement4);
+
+            const cellElement5 = document.createElement("td"); //5 of 5
+            cellElement5.textContent = isHazard;
+            rowElement.appendChild(cellElement5);
+            
+
+            tableBody.appendChild(rowElement); //finally add the row to the table
+
+        }
 
 
     });
