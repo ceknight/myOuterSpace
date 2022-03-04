@@ -73,18 +73,18 @@ searchForm.addEventListener("submit", (e) => {
 
         //populate table body
 
-        for (let i = 0; i < neoArray.length; i++) {
+        for (const asteroid of neoArray) {
 
             //create a table row for each object found in the array
             const rowElement = document.createElement("tr");
             
             //get the data i want from the neoArray Object
-            const approachDate = neoArray[i].close_approach_data[0].close_approach_date_full;
-            const missDistance = neoArray[i].close_approach_data[0].miss_distance.miles;
-            const relVelocity = neoArray[i].close_approach_data[0].relative_velocity.miles_per_hour;
-            const diameterMin = neoArray[i].estimated_diameter.feet.estimated_diameter_min;
-            const diameterMax = neoArray[i].estimated_diameter.feet.estimated_diameter_max;
-            const isHazard = neoArray[i].is_potentially_hazardous_asteroid;
+            const approachDate = asteroid.close_approach_data[0].close_approach_date_full;
+            const missDistance = asteroid.close_approach_data[0].miss_distance.miles;
+            const relVelocity = asteroid.close_approach_data[0].relative_velocity.miles_per_hour;
+            const diameterMin = asteroid.estimated_diameter.feet.estimated_diameter_min;
+            const diameterMax = asteroid.estimated_diameter.feet.estimated_diameter_max;
+            const isHazard = asteroid.is_potentially_hazardous_asteroid;
 
             //round all the insane numbers to two decimal places
             const missDist = round(missDistance, 2);

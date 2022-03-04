@@ -11118,5 +11118,15 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+* {
+  background: black;
+  color: #dee2e6;
+}
+
+.nav {
+  position: fixed;
+  align-items: center;
+  width: 100%;
+}
 
 /*# sourceMappingURL=style.css.map */

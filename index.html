@@ -9,30 +9,21 @@
 </head>
 <body>
 
-    <header></header>
+    <header>
+        <ul class="nav navbar justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#neo_tracker">N.E.O. Tracker</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#nasa_iotd">Image of the Day</a>
+            </li>
+          </ul>
+    </header>
 
     <main>
 
-        <!--This Section is for the NASA Image of the Day-->
-        <div class="container mb-5">
-            <div class="row mb-4">
-                <div class="col" id="nasa_img">
-                    
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col">
-                    <h1>Image Name</h1>
-                </div>
-                <div class="col" id="nasa_img_description">
-                    
-                </div>
-            </div>
-        </div>
-
-
         <!--This section is for the near earth object tracker-->
-        <div class="container">
+        <div class="container pt-5" id="neo_tracker">
             <div class="row mb-3">
                 <div class="col">
                     <h1>Near Earth Object Tracker</h1>
@@ -86,6 +77,23 @@
             </div>
         </div>
 
+
+        <!--This Section is for the NASA Image of the Day-->
+        <div class="container mt-5" id="nasa_iotd">
+            <div class="row mb-2">
+                <div class="col">
+                    <h1>NASA's Image of the Day</h1>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col" id="nasa_img">
+                    
+                </div>
+            </div>
+            <div class="row" id="nasa_img_description">
+                    
+            </div>
+        </div>
 
     </main>
 

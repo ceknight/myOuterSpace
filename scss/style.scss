@@ -1,2 +1,15 @@
 
-@use 'custom';
+@use './custom';
+
+*{
+    background: black;
+    color: #dee2e6;
+}
+
+.nav {
+    
+    position: fixed;
+    align-items: center;
+    width: 100%;
+
+}
