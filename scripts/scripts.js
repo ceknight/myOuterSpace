@@ -22,24 +22,12 @@ fetch('https://api.nasa.gov/planetary/apod?api_key=' + myNasa)
 
 
 //getting appropriate boundaries for the date field
-let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth();
-    const yyyy = today.getFullYear();
 
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
 
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-
-    today = yyyy + '-' + mm + '-' + dd;
-    document.getElementById("searchDate").setAttribute("max", today);
 
 
 //near earth object data request
+
 const searchForm = document.getElementById("searchForm");
 
 searchForm.addEventListener("submit", (e) => {
